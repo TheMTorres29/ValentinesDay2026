@@ -43,6 +43,7 @@ body {
     font-size: 9rem;
     animation: floatUp infinite ease-in;
     opacity: 0;
+    user-select: none;
 }
 
 .heart:nth-child(odd) {
@@ -81,11 +82,14 @@ body {
     display: flex;
     z-index: 1;
     white-space: pre-line;
+    user-select: none;
 }
 
 .mickey-img {
     position: relative;
     z-index: 1;
+    user-select: none;
+    pointer-events: none;
 }
 
 /* Buttons */
@@ -107,11 +111,13 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    user-select: none;
 }
 
-.yes-btn:hover {
-    background-color: #e0435f;
-}
+    .yes-btn:hover {
+        background-color: #e0435f;
+        user-select: none;
+    }
 
 .no-btn {
     background-color: #ccc;
@@ -122,8 +128,10 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    user-select: none;
 }
 
-.no-btn:hover {
-    background-color: #b3b3b3;
-}
+    .no-btn:hover {
+        background-color: #b3b3b3;
+        user-select: none;
+    }
