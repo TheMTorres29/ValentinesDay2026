@@ -103,7 +103,7 @@
     justify-content: center;
     align-items: center;
     height: 90%;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Damion', cursive;
     padding: 20px;
     text-align: center;
     z-index: 0;
@@ -135,9 +135,29 @@
     text-shadow: 0 2px 4px rgba(255, 77, 109, 0.1);
     z-index: 100;
     padding-top: 20px;
+    animation: heartBeat 1.5s ease-in-out infinite;
 }
 
-/* Add a glow effect on hover */
-.envelope:hover .letter-paper {
-    box-shadow: 0 12px 24px rgba(255, 105, 180, 0.3);
+/* Responsive adjustments */
+@media (max-width: 450px) {
+    .envelope {
+        width: 300px;
+        height: 165px;
+    }
+    .flap {
+        border-width: 75px 142.5px 0 157.5px;
+    }
+    .letter-paper {
+        width: 210px;
+        height: 120px;
+        top: 10px;
+    }
+    .letter-content p:first-child {
+        font-size: 1.5rem;
+        margin-top: 7rem;
+    }
+    .letter-content p:last-child {
+        font-size: 1.5rem;
+        margin-top: 25px;
+    }
 }

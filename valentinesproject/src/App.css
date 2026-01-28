@@ -5,11 +5,11 @@
     padding: 2rem;
     text-align: center;
     border: 29px solid #ff4d6d;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Damion', cursive;
 }
 
 body {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Damion', cursive;
     background-color: #ebbcbc;
     color: #333;
     margin: 0 auto;
@@ -31,7 +31,7 @@ body {
     position: fixed;
     top: 0;
     left: -20px;
-    width: 100%;
+    width: 105%;
     height: 100%;
     pointer-events: none;
     z-index: 0;
@@ -167,4 +167,14 @@ body {
 .no-btn:hover {
     background-color: #b3b3b3;
     user-select: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 450px) {
+    .mickey-img {
+        max-width: 270px;
+    }
+    .heart {
+        font-size: 5rem;
+    }
 }
