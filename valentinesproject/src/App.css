@@ -113,6 +113,10 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .yes-btn:hover {
@@ -130,6 +134,10 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .no-btn:hover {
