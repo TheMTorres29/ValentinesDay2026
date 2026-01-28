@@ -1,5 +1,7 @@
 ﻿# 💌 Valentine's Day 2026 - Interactive Proposal Web App
 
+ https://themtorres29.github.io/ValentinesDay2026/
+
 A romantic and interactive web application built with React to ask that special someone to be your Valentine! Features a beautiful letter opening animation, playful interactions, and email notifications when they say "Yes!" 💕
 
 ![Valentine's Day App](https://img.shields.io/badge/Made%20With-Love-ff69b4?style=for-the-badge)
@@ -102,7 +104,19 @@ Update the color scheme in `src/App.css` and `src/Letter.css`:
 Add your own GIFs to `src/assets/` and update the imports in `src/App.jsx`.
 
 ## 📁 Project Structure
-valentinesproject/ ├── src/ │   ├── assets/ │   │   ├── mikey.gif      # Initial Mickey Mouse GIF │   │   └── kith.gif       # Celebration Mickey Mouse GIF │   ├── App.jsx            # Main application component │   ├── App.css            # Main styling │   ├── Letter.jsx         # Letter opening animation component │   ├── Letter.css         # Letter styling │   └── main.jsx           # Entry point ├── index.html ├── package.json └── README.md
+valentinesproject/ 
+├── src/ │   
+   ├── assets/ │   │   
+      ├── mikey.gif      # Initial Mickey Mouse GIF │   │   
+      └── kith.gif       # Celebration Mickey Mouse GIF │   
+   ├── App.jsx            # Main application component │   
+   ├── App.css            # Main styling │   
+   ├── Letter.jsx         # Letter opening animation component │   
+   ├── Letter.css         # Letter styling 
+   └── main.jsx           # Entry point 
+├── index.html 
+├── package.json 
+└── README.md
 
 
 ## 💡 How It Works
