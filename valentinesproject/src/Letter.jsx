@@ -1,9 +1,19 @@
-﻿import React from 'react'
+﻿import React, { useState } from 'react'
 import './Letter.css'
 
 function Letter({ onOpen }) {
+    const [isClosing, setIsClosing] = useState(false)
+
+    const handleClick = () => {
+        setIsClosing(true)
+        // Wait for animation to complete before calling onOpen
+        setTimeout(() => {
+            onOpen()
+        }, 800)
+    }
+
     return (
-        <div className="letter-container" onClick={onOpen}>
+        <div className={`letter-container ${isClosing ? 'fade-out' : ''}`} onClick={handleClick}>
             <div className="envelope">
                 <div className="flap"></div>
                 <div className="body"></div>

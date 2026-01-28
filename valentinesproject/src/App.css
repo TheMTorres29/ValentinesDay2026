@@ -1,20 +1,22 @@
-#root {
-    max-width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    border: 29px solid #ff4d6d;
-    font-family: 'Damion', cursive;
-}
-
-body {
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
     font-family: 'Damion', cursive;
     background-color: #ebbcbc;
     color: #333;
-    margin: 0 auto;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
     padding: 0;
-    position: center;
+    text-align: center;
+    font-family: 'Damion', cursive;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .container {
@@ -22,16 +24,37 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 100vh;
     position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: scale(0.95);
+    border: #e0435f thick solid;
+}
+
+.container.fade-in {
+    animation: fadeInContent 1s ease-out forwards;
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 /* Hearts Background Animation */
 .hearts-background {
     position: fixed;
     top: 0;
-    left: -20px;
-    width: 105%;
+    left: -30px;
+    width: 110%;
     height: 100%;
     pointer-events: none;
     z-index: 0;
@@ -42,29 +65,43 @@ body {
     position: absolute;
     bottom: -50px;
     font-size: 9rem;
-    animation: floatUp infinite ease-in, sway 3s ease-in-out infinite;
+    animation: floatUp infinite ease-in;
     opacity: 0;
     user-select: none;
 }
 
 .heart:nth-child(odd) {
     color: #ff69b4;
-    text-shadow: 0 0 20px #ff69b4, 0 0 2px #ff1493;
+    text-shadow: 0 0 15px #ff69b4, 0 0 25px #ff1493;
 }
 
 .heart:nth-child(even) {
     color: white;
-    text-shadow: 0 0 20px #fff, 0 0 10px #ffb6c1;
+    text-shadow: 0 0 15px #fff, 0 0 25px #ffb6c1;
 }
+
+/* Add varying sizes */
+.heart:nth-child(3n) { font-size: 5rem; }
+.heart:nth-child(3n+1) { font-size: 7rem; }
+.heart:nth-child(3n+2) { font-size: 9rem; }
 
 @keyframes floatUp {
     0% {
         bottom: -50px;
         opacity: 0;
-        transform: translateX(0) scale(0.5);
+        transform: translateX(0) scale(0.5) rotate(0deg);
     }
     10% {
         opacity: 1;
+    }
+    25% {
+        transform: translateX(-20px) scale(0.8) rotate(90deg);
+    }
+    50% {
+        transform: translateX(20px) scale(1) rotate(180deg);
+    }
+    75% {
+        transform: translateX(-10px) scale(1.1) rotate(270deg);
     }
     90% {
         opacity: 1;
@@ -72,41 +109,20 @@ body {
     100% {
         bottom: 110vh;
         opacity: 0;
-        transform: translateX(var(--drift, 20px)) scale(1.2);
-    }
-}
-
-@keyframes shimmer {
-    0%, 100% {
-        filter: drop-shadow(0 0 15px currentColor) brightness(1);
-    }
-
-    50% {
-        filter: drop-shadow(0 0 12px currentColor) brightness(1.1);
-    }
-}
-
-@keyframes sway {
-    0%, 100% {
-        transform: translateX(0);
-    }
-
-    50% {
-        transform: translateX(30px);
+        transform: translateX(10px) scale(0.7) rotate(360deg);
     }
 }
 
 /* Valentines */
 .val-title {
     font-size: 3rem;
-    font-weight: 200;
     color: #ff4d6d;
     margin-bottom: 1rem;
     position: relative;
-    display: flex;
     z-index: 1;
-    white-space: pre-line;
     user-select: none;
+    white-space: pre-line;
+    padding: 0 1rem;
 }
 
 .mickey-img {
@@ -114,11 +130,14 @@ body {
     z-index: 1;
     user-select: none;
     pointer-events: none;
-    max-width: 350px;
+    max-width: 90%;
+    max-height: 40vh;
+    object-fit: contain;
 }
 
 /* Buttons */
 .btn-container {
+    padding: 1rem;
     margin-top: 2rem;
     display: flex;
     justify-content: center;
@@ -145,7 +164,6 @@ body {
 
 .yes-btn:hover {
     background-color: #e0435f;
-    user-select: none;
 }
 
 .no-btn {
@@ -173,6 +191,9 @@ body {
 @media (max-width: 450px) {
     .mickey-img {
         max-width: 270px;
+    }
+    .val-title {
+        font-size: 2rem;
     }
     .heart {
         font-size: 3rem;

@@ -1,4 +1,5 @@
-﻿import React, { useState, useEffect, useMemo } from 'react'
+﻿/* eslint-disable react-hooks/purity */
+import React, { useState, useEffect, useMemo } from 'react'
 import './App.css'
 import mickeyFlowers from './assets/mikey.gif'
 import mickeyKiss from './assets/kith.gif'
@@ -7,6 +8,7 @@ import Letter from './Letter'
 
 function App() {
     const [letterOpened, setLetterOpened] = useState(false)
+    const [showContent, setShowContent] = useState(false)
     const [mickeyImg, setMickeyImg] = useState(mickeyFlowers)
     const [showHearts, setShowHearts] = useState(false)
     const [showButtons, setShowButtons] = useState(true)
@@ -55,6 +57,16 @@ function App() {
         emailjs.init('ewzkK8die2UPV--dA')
     }, [])
 
+    // Trigger fade-in when letter is opened
+    useEffect(() => {
+        if (letterOpened) {
+            // Small delay before showing content to ensure smooth transition
+            setTimeout(() => {
+                setShowContent(true)
+            }, 100)
+        }
+    }, [letterOpened])
+
     const handleLetterOpen = () => {
         setLetterOpened(true)
     }
@@ -66,7 +78,8 @@ function App() {
         
         // Send email notification
         const templateParams = {
-            to_email: 'themtorres29@gmail.com',
+            to_email: '',
+            //to_email: 'themtorres29@gmail.com',
             message: 'She said YES! 💕',
             date: new Date().toLocaleString()
         }
@@ -84,6 +97,7 @@ function App() {
         })
     }
 
+    // Handle 'No' Button Click
     const handleNoClick = () => {
         const nextIndex = (noIndex + 1) % noMessages.length
         setNoIndex(nextIndex)
@@ -97,7 +111,7 @@ function App() {
 
     // Show main content after letter is opened
     return (
-        <div className="container">
+        <div className={`container ${showContent ? 'fade-in' : ''}`}>
             {showHearts && (
                 <div className="hearts-background">
                     {hearts.map((heart) => (
