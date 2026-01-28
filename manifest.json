@@ -1,0 +1,45 @@
+﻿{
+  "name": "Will You Be My Valentine? 💕",
+  "short_name": "Valentine 2026",
+  "description": "An interactive Valentine's Day proposal app with love and hearts!",
+  "start_url": "/ValentinesDay2026/",
+  "display": "standalone",
+  "background_color": "#ebbcbc",
+  "theme_color": "#ff4d6d",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/ValentinesDay2026/VDay-Icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ValentinesDay2026/VDay-Icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/ValentinesDay2026/VDay-Icon.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["entertainment", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Open Valentine",
+      "short_name": "Valentine",
+      "description": "Open the Valentine's Day proposal",
+      "url": "/ValentinesDay2026/",
+      "icons": [
+        {
+          "src": "/ValentinesDay2026/VDay-Icon.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
