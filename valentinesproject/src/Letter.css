@@ -170,3 +170,26 @@
         margin-top: 25px;
     }
 }
+
+@media (max-width: 320px) {
+    .envelope {
+        width: 250px;
+        height: 137.5px;
+    }
+    .flap {
+        border-width: 62.5px 118.75px 0 131.25px;
+    }
+    .letter-paper {
+        width: 175px;
+        height: 100px;
+        top: 10px;
+    }
+    .letter-content p:first-child {
+        font-size: 1.2rem;
+        margin-top: 5rem;
+    }
+    .letter-content p:last-child {
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+}
