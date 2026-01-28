@@ -55,7 +55,7 @@
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 100px 195px 0 210px;
+    border-width: 100px 190px 0 210px;
     border-color: #ff4d8f transparent transparent transparent;
     transform-origin: top center;
     z-index: 2;
@@ -103,19 +103,19 @@
     justify-content: center;
     align-items: center;
     height: 90%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Pacifico', cursive;
     padding: 20px;
     text-align: center;
     z-index: 0;
 }
 
-    .letter-content p:first-child {
-        font-size: 2rem;
-        margin-top: 8rem;
-        animation: heartBeat 1.5s ease-in-out infinite;
-        color: #ff4d8f;
-        z-index: 100;
-    }
+.letter-content p:first-child {
+    font-size: 2rem;
+    margin-top: 10rem;
+    animation: heartBeat 1.5s ease-in-out infinite;
+    color: #ff4d8f;
+    z-index: 100;
+}
 
 @keyframes heartBeat {
     0%, 100% {
@@ -128,8 +128,8 @@
 
 .letter-content p:last-child {
     margin: 35px 0 0 0;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 500;
     letter-spacing: 1px;
     color: #ff4d8f;
     text-shadow: 0 2px 4px rgba(255, 77, 109, 0.1);

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect, useMemo } from 'react'
 import './App.css'
 import mickeyFlowers from './assets/mikey.gif'
 import mickeyKiss from './assets/kith.gif'
@@ -38,6 +38,17 @@ function App() {
     ]
     
     const [noIndex, setNoIndex] = useState(0)
+
+    // Generate hearts data once
+    const hearts = useMemo(() => {
+        return [...Array(20)].map((_, i) => ({
+            id: i,
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 1}s`,
+            animationDuration: `${5 + Math.random() * 5}s`,
+            symbol: i % 2 === 0 ? '♥' : '♡'
+        }))
+    }, [])
 
     // Initialize EmailJS
     useEffect(() => {
@@ -89,17 +100,17 @@ function App() {
         <div className="container">
             {showHearts && (
                 <div className="hearts-background">
-                    {[...Array(20)].map((_, i) => (
+                    {hearts.map((heart) => (
                         <div 
-                            key={i} 
+                            key={heart.id} 
                             className="heart"
                             style={{
-                                left: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 1}s`,
-                                animationDuration: `${5 + Math.random() * 5}s`
+                                left: heart.left,
+                                animationDelay: heart.animationDelay,
+                                animationDuration: heart.animationDuration
                             }}
                         >
-                            {i % 2 === 0 ? '♥' : '♡'}
+                            {heart.symbol}
                         </div>
                     ))}
                 </div>
