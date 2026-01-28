@@ -42,17 +42,19 @@ body {
     position: absolute;
     bottom: -50px;
     font-size: 9rem;
-    animation: floatUp infinite ease-in;
+    animation: floatUp infinite ease-in, sway 3s ease-in-out infinite;
     opacity: 0;
     user-select: none;
 }
 
 .heart:nth-child(odd) {
     color: #ff69b4;
+    text-shadow: 0 0 20px #ff69b4, 0 0 2px #ff1493;
 }
 
 .heart:nth-child(even) {
     color: white;
+    text-shadow: 0 0 20px #fff, 0 0 10px #ffb6c1;
 }
 
 @keyframes floatUp {
@@ -71,6 +73,26 @@ body {
         bottom: 110vh;
         opacity: 0;
         transform: translateX(var(--drift, 20px)) scale(1.2);
+    }
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        filter: drop-shadow(0 0 15px currentColor) brightness(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 12px currentColor) brightness(1.1);
+    }
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(30px);
     }
 }
 
