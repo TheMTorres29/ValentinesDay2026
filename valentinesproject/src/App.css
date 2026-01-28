@@ -90,6 +90,7 @@ body {
     z-index: 1;
     user-select: none;
     pointer-events: none;
+    max-width: 350px;
 }
 
 /* Buttons */
