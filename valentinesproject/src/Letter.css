@@ -1,0 +1,142 @@
+.letter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe0e9 100%);
+    cursor: pointer;
+    animation: fadeIn 1s ease-in;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.envelope {
+    position: relative;
+    width: 400px;
+    height: 220px;
+    perspective: 1000px;
+    z-index: 0;
+}
+
+.envelope:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Envelope body - rectangle */
+.body {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ff69b4;
+    border-radius: 0 0 10px 10px;
+    z-index: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Top flap */
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 100px 195px 0 210px;
+    border-color: #ff4d8f transparent transparent transparent;
+    transform-origin: top center;
+    z-index: 2;
+    animation: flapWave 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes flapWave {
+    0%, 100% {
+        transform: translateY(0) rotateX(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(-15deg);
+    }
+}
+
+/* Letter paper peeking out */
+.letter-paper {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 160px;
+    background: linear-gradient(to bottom, #ffffff 0%, #fffbf8 100%);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 0;
+    animation: paperPeek 3s ease-in-out infinite;
+    border: 1px solid #f0f0f0;
+}
+
+@keyframes paperPeek {
+    0%, 100% {
+        bottom: 40px;
+    }
+    50% {
+        bottom: 60px;
+    }
+}
+
+.letter-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    text-align: center;
+    z-index: 0;
+}
+
+    .letter-content p:first-child {
+        font-size: 2rem;
+        margin-top: 10rem;
+        animation: heartBeat 1.5s ease-in-out infinite;
+        color: #ff4d8f;
+        z-index: 100;
+    }
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.letter-content p:last-child {
+    margin: 15px 0 0 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ff4d8f;
+    text-shadow: 0 2px 4px rgba(255, 77, 109, 0.1);
+    z-index: 100;
+}
+
+/* Add a glow effect on hover */
+.envelope:hover .letter-paper {
+    box-shadow: 0 12px 24px rgba(255, 105, 180, 0.3);
+}

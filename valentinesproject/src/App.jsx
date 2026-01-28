@@ -1,10 +1,12 @@
-﻿import React, { useState } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import './App.css'
 import mickeyFlowers from './assets/mikey.gif'
 import mickeyKiss from './assets/kith.gif'
 import emailjs from '@emailjs/browser'
+import Letter from './Letter'
 
 function App() {
+    const [letterOpened, setLetterOpened] = useState(false)
     const [mickeyImg, setMickeyImg] = useState(mickeyFlowers)
     const [showHearts, setShowHearts] = useState(false)
     const [showButtons, setShowButtons] = useState(true)
@@ -37,6 +39,15 @@ function App() {
     
     const [noIndex, setNoIndex] = useState(0)
 
+    // Initialize EmailJS
+    useEffect(() => {
+        emailjs.init('ewzkK8die2UPV--dA')
+    }, [])
+
+    const handleLetterOpen = () => {
+        setLetterOpened(true)
+    }
+
     const handleYesClick = () => {
         setMickeyImg(mickeyKiss)
         setShowHearts(true)
@@ -44,16 +55,15 @@ function App() {
         
         // Send email notification
         const templateParams = {
-            to_email: 'themtorres29@gmail.com', // Replace with your email
+            to_email: 'themtorres29@gmail.com',
             message: 'She said YES! 💕',
             date: new Date().toLocaleString()
         }
         
         emailjs.send(
-            'service_5uniw3r',      // Replace with your EmailJS Service ID
-            'template_53jz9rm',     // Replace with your EmailJS Template ID
-            templateParams,
-            'ewzkK8die2UPV--dA'       // Replace with your EmailJS Public Key
+            'service_5uniw3r',
+            'template_53jz9rm',
+            templateParams
         )
         .then((response) => {
             console.log('Email sent successfully!', response.status, response.text)
@@ -69,7 +79,13 @@ function App() {
         setNoButtonText(noMessages[nextIndex])
     }
 
-  return (
+    // Show letter initially
+    if (!letterOpened) {
+        return <Letter onOpen={handleLetterOpen} />
+    }
+
+    // Show main content after letter is opened
+    return (
         <div className="container">
             {showHearts && (
                 <div className="hearts-background">
@@ -103,7 +119,7 @@ function App() {
                 </div>
             )}
         </div>
-  )
+    )
 }
 
 export default App
