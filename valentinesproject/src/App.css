@@ -114,10 +114,10 @@ body {
     user-select: none;
 }
 
-    .yes-btn:hover {
-        background-color: #e0435f;
-        user-select: none;
-    }
+.yes-btn:hover {
+    background-color: #e0435f;
+    user-select: none;
+}
 
 .no-btn {
     background-color: #ccc;
@@ -131,7 +131,7 @@ body {
     user-select: none;
 }
 
-    .no-btn:hover {
-        background-color: #b3b3b3;
-        user-select: none;
-    }
+.no-btn:hover {
+    background-color: #b3b3b3;
+    user-select: none;
+}
