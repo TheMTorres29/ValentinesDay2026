@@ -9,7 +9,7 @@ import Letter from './Letter'
 function App() {
     const [letterOpened, setLetterOpened] = useState(false)
     const [showContent, setShowContent] = useState(false)
-    const [mickeyImg, setMickeyImg] = useState(mickeyFlowers)
+    const [showKissGif, setShowKissGif] = useState(false)
     const [showHearts, setShowHearts] = useState(false)
     const [showButtons, setShowButtons] = useState(true)
     const [noButtonText, setNoButtonText] = useState("No")
@@ -60,7 +60,6 @@ function App() {
     // Trigger fade-in when letter is opened
     useEffect(() => {
         if (letterOpened) {
-            // Small delay before showing content to ensure smooth transition
             setTimeout(() => {
                 setShowContent(true)
             }, 100)
@@ -72,7 +71,7 @@ function App() {
     }
 
     const handleYesClick = () => {
-        setMickeyImg(mickeyKiss)
+        setShowKissGif(true)
         setShowHearts(true)
         setShowButtons(false)
         
@@ -129,11 +128,18 @@ function App() {
                     ))}
                 </div>
             )}
-            <img 
-                src={mickeyImg} 
-                alt="Mickey Mouse"
-                className="mickey-img"
-            ></img>
+            <div className="mickey-container">
+                <img 
+                    src={mickeyFlowers} 
+                    alt="Mickey Mouse with flowers"
+                    className={`mickey-img mickey-flowers ${showKissGif ? 'hide' : 'show'}`}
+                />
+                <img 
+                    src={mickeyKiss} 
+                    alt="Mickey Mouse kissing"
+                    className={`mickey-img mickey-kiss ${showKissGif ? 'show heart-shape' : 'hide'}`}
+                />
+            </div>
             <h1 className="val-title">
                 {showButtons ? "Will you be my Valentine?" : "Perfect, It's a date!\nHappy Valentine's Day bb! 💕"}
             </h1>
