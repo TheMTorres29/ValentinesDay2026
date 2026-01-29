@@ -1,0 +1,136 @@
+.config-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe0e9 100%);
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.config-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(255, 77, 109, 0.2);
+}
+
+.config-title {
+    font-family: 'Damion', cursive;
+    font-size: 2.5rem;
+    color: #ff4d6d;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.config-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.config-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff69b4;
+}
+
+.form-group input.error {
+    border-color: #ff4444;
+}
+
+.error-text {
+    color: #ff4444;
+    font-size: 0.85rem;
+    margin-top: -0.25rem;
+}
+
+.emailjs-section {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+}
+
+.emailjs-section h3 {
+    margin: 0 0 0.5rem 0;
+    color: #ff4d6d;
+    font-size: 1.2rem;
+}
+
+.helper-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.helper-text a {
+    color: #ff69b4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.helper-text a:hover {
+    text-decoration: underline;
+}
+
+.config-submit {
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.config-submit:hover {
+    background-color: #e0435f;
+    transform: translateY(-2px);
+}
+
+.config-submit:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .config-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .config-title {
+        font-size: 2rem;
+    }
+}

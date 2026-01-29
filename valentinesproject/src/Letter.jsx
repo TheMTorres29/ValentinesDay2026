@@ -1,7 +1,7 @@
 ﻿import React, { useState } from 'react'
 import './Letter.css'
 
-function Letter({ onOpen }) {
+function Letter({ onOpen, partnerName }) {
     const [isClosing, setIsClosing] = useState(false)
 
     const handleClick = () => {
@@ -19,7 +19,8 @@ function Letter({ onOpen }) {
                 <div className="body"></div>
                 <div className="letter-paper">
                     <div className="letter-content">
-                        <p>To: Frida</p>
+                        <p>💌</p>
+                        {partnerName && <p className="letter-to">To: {partnerName}</p>}
                         <p>Click to open</p>
                     </div>
                 </div>

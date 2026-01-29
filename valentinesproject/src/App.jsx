@@ -5,8 +5,10 @@ import mickeyFlowers from './assets/mikey.gif'
 import mickeyKiss from './assets/kith.gif'
 import emailjs from '@emailjs/browser'
 import Letter from './Letter'
+import Config from './Config'
 
 function App() {
+    const [config, setConfig] = useState(null)
     const [letterOpened, setLetterOpened] = useState(false)
     const [showContent, setShowContent] = useState(false)
     const [showKissGif, setShowKissGif] = useState(false)
@@ -52,9 +54,15 @@ function App() {
         }))
     }, [])
 
-    // Initialize EmailJS
+    // Check for existing config on mount
     useEffect(() => {
-        emailjs.init('ewzkK8die2UPV--dA')
+        const savedConfig = localStorage.getItem('valentineConfig')
+        if (savedConfig) {
+            const parsedConfig = JSON.parse(savedConfig)
+            setConfig(parsedConfig)
+            // Initialize EmailJS with saved config
+            emailjs.init(parsedConfig.emailjsPublicKey)
+        }
     }, [])
 
     // Trigger fade-in when letter is opened
@@ -65,6 +73,12 @@ function App() {
             }, 100)
         }
     }, [letterOpened])
+
+    const handleConfigComplete = (configData) => {
+        setConfig(configData)
+        // Initialize EmailJS
+        emailjs.init(configData.emailjsPublicKey)
+    }
 
     const handleLetterOpen = () => {
         setLetterOpened(true)
@@ -77,15 +91,15 @@ function App() {
         
         // Send email notification
         const templateParams = {
-            to_email: '',
-            //to_email: 'themtorres29@gmail.com',
-            message: 'She said YES! 💕',
+            to_email: config.yourEmail,
+            partner_name: config.partnerName,
+            message: `${config.partnerName} said YES! 💕`,
             date: new Date().toLocaleString()
         }
         
         emailjs.send(
-            'service_5uniw3r',
-            'template_53jz9rm',
+            config.emailjsServiceId,
+            config.emailjsTemplateId,
             templateParams
         )
         .then((response) => {
@@ -96,16 +110,20 @@ function App() {
         })
     }
 
-    // Handle 'No' Button Click
     const handleNoClick = () => {
         const nextIndex = (noIndex + 1) % noMessages.length
         setNoIndex(nextIndex)
         setNoButtonText(noMessages[nextIndex])
     }
 
+    // Show config if not set up yet
+    if (!config) {
+        return <Config onComplete={handleConfigComplete} />
+    }
+
     // Show letter initially
     if (!letterOpened) {
-        return <Letter onOpen={handleLetterOpen} />
+        return <Letter onOpen={handleLetterOpen} partnerName={config.partnerName} />
     }
 
     // Show main content after letter is opened
@@ -141,7 +159,9 @@ function App() {
                 />
             </div>
             <h1 className="val-title">
-                {showButtons ? "Will you be my Valentine?" : "Perfect, It's a date!\nHappy Valentine's Day bb! 💕"}
+                {showButtons 
+                    ? `${config.partnerName}, will you be my Valentine?` 
+                    : `Perfect, It's a date!\nHappy Valentine's Day ${config.partnerName}! 💕`}
             </h1>
             {showButtons && (
                 <div className="btn-container">
