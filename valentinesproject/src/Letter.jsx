@@ -19,7 +19,6 @@ function Letter({ onOpen, partnerName }) {
                 <div className="body"></div>
                 <div className="letter-paper">
                     <div className="letter-content">
-                        <p>💌</p>
                         {partnerName && <p className="letter-to">To: {partnerName}</p>}
                         <p>Click to open</p>
                     </div>
