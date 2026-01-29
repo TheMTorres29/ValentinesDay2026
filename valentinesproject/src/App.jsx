@@ -3,12 +3,11 @@ import React, { useState, useEffect, useMemo } from 'react'
 import './App.css'
 import mickeyFlowers from './assets/mikey.gif'
 import mickeyKiss from './assets/kith.gif'
-import emailjs from '@emailjs/browser'
 import Letter from './Letter'
 import Config from './Config'
 
 function App() {
-    const [config, setConfig] = useState(null)
+    const [partnerName, setPartnerName] = useState(null)
     const [letterOpened, setLetterOpened] = useState(false)
     const [showContent, setShowContent] = useState(false)
     const [showKissGif, setShowKissGif] = useState(false)
@@ -54,14 +53,11 @@ function App() {
         }))
     }, [])
 
-    // Check for existing config on mount
+    // Check for existing partner name on mount
     useEffect(() => {
-        const savedConfig = localStorage.getItem('valentineConfig')
-        if (savedConfig) {
-            const parsedConfig = JSON.parse(savedConfig)
-            setConfig(parsedConfig)
-            // Initialize EmailJS with saved config
-            emailjs.init(parsedConfig.emailjsPublicKey)
+        const savedName = localStorage.getItem('valentinePartnerName')
+        if (savedName) {
+            setPartnerName(savedName)
         }
     }, [])
 
@@ -74,10 +70,8 @@ function App() {
         }
     }, [letterOpened])
 
-    const handleConfigComplete = (configData) => {
-        setConfig(configData)
-        // Initialize EmailJS
-        emailjs.init(configData.emailjsPublicKey)
+    const handleConfigComplete = (name) => {
+        setPartnerName(name)
     }
 
     const handleLetterOpen = () => {
@@ -88,26 +82,6 @@ function App() {
         setShowKissGif(true)
         setShowHearts(true)
         setShowButtons(false)
-        
-        // Send email notification
-        const templateParams = {
-            to_email: config.yourEmail,
-            partner_name: config.partnerName,
-            message: `${config.partnerName} said YES! 💕`,
-            date: new Date().toLocaleString()
-        }
-        
-        emailjs.send(
-            config.emailjsServiceId,
-            config.emailjsTemplateId,
-            templateParams
-        )
-        .then((response) => {
-            console.log('Email sent successfully!', response.status, response.text)
-        })
-        .catch((error) => {
-            console.error('Failed to send email:', error)
-        })
     }
 
     const handleNoClick = () => {
@@ -117,13 +91,13 @@ function App() {
     }
 
     // Show config if not set up yet
-    if (!config) {
+    if (!partnerName) {
         return <Config onComplete={handleConfigComplete} />
     }
 
     // Show letter initially
     if (!letterOpened) {
-        return <Letter onOpen={handleLetterOpen} partnerName={config.partnerName} />
+        return <Letter onOpen={handleLetterOpen} partnerName={partnerName} />
     }
 
     // Show main content after letter is opened
@@ -160,8 +134,8 @@ function App() {
             </div>
             <h1 className="val-title">
                 {showButtons 
-                    ? `${config.partnerName}, will you be my Valentine?` 
-                    : `Perfect, It's a date!\nHappy Valentine's Day ${config.partnerName}! 💕`}
+                    ? `${partnerName}, will you be my Valentine?` 
+                    : `Perfect, It's a date!\nHappy Valentine's Day ${partnerName}! 💕`}
             </h1>
             {showButtons && (
                 <div className="btn-container">
